@@ -8,7 +8,8 @@ const logger = require('./middleware/logger.js');
 const cors = require('cors');
 const morgan = require('morgan');
 const authRoutes = require('./routes.js');
-const v1Routes = require('./v1.js');
+// const v1Routes = require('./v1.js');
+const v2Routes = require('./v2.js');
 const app = express();
 
 app.use(cors());
@@ -20,7 +21,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 app.use(authRoutes);
 
-app.use('/api/v1', v1Routes);
+// app.use('/api/v1', v1Routes);
+app.use('/api/v2', v2Routes);
 
 app.use('*', notFoundHandler);
 app.use(errorHandler);
