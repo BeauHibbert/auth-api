@@ -7,8 +7,8 @@ const errorHandler = require('./error-handlers/500.js');
 const logger = require('./middleware/logger.js');
 const cors = require('cors');
 const morgan = require('morgan');
-const authRoutes = require('./auth/routes.js');
-const v1Routes = require('./routes/v1.js');
+const authRoutes = require('./routes.js');
+const v1Routes = require('./v1.js');
 const app = express();
 
 app.use(cors());
@@ -25,7 +25,7 @@ app.use('/api/v1', v1Routes);
 app.use('*', notFoundHandler);
 app.use(errorHandler);
 
-app.use(notFound);
+app.use(notFoundHandler);
 app.use(errorHandler);
 
 module.exports = {
